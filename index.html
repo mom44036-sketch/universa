@@ -229,12 +229,12 @@ summary::-webkit-details-marker{display:none}
 <!-- TRUST MARQUEE - News Ticker Style -->
 <section class="relative bg-[#EDF4FF] py-6 overflow-hidden border-y border-white/5">
   <div class="flex items-center justify-center gap-3 mb-4">
-    <div class="h-px w-12 bg-[#285a94]"></div>
-    <p class="font-display  text- tracking-[0.2em] text-[#285a94] ">موثقون لدى أكثر من +16 جامعة سعودية</p>
-    <div class="h-px w-12 bg-porto-primary"></div>
+    <div class="h-px w-12 bg-[#5e8dd7]/10"></div>
+    <p class="font-display  text- tracking-[0.2em]  text-[#5e8dd7]/50">موثقون لدى أكثر من +16 جامعة سعودية</p>
+    <div class="h-px w-12 bg-[#5e8dd7]/10"></div>
   </div>
 
-  <div class="relative overflow-hidden  mt-[50px]" dir="ltr">
+  <div class="relative overflow-hidden  mt-[40px]" dir="ltr">
     <div id="marquee-track" class="flex items-center gap-16 w-max will-change-transform animate-marquee"></div>
   </div>
 </section>
@@ -733,37 +733,25 @@ function buildMarquee(){
   const track = document.getElementById('marquee-track');
   if(!track) return;
 
-  // حط هنا مسارات الصور بتاعتك
-  const logos = [
-    '01.png',
-    '02.png',
-    '03.png',
-    '04.png',
-    '05.png',
-    '06.png',
-    '07.png',
-    '08.png',
-    '09.png',
-    '10.png',
-    '11.png',
-    '12.png',
-    '13.png',
-    '14.png',
-    '15.png',
-    '16.png'
+  const universities = [
+    "جامعة بيشة","جامعة تبوك","جامعة القصيم","جامعة طيبة",
+    "الجامعة العربية المفتوحة","جامعة حائل","جامعة أم القرى",
+    "جامعة الملك سعود","الجامعة السعودية الإلكترونية","جامعة المجمعة"
   ];
 
-  // ده تاج الصورة اللي هيلف - تتحكم في حجمه من h-9
-const logoItems = logos.map(src => `
-  <img src="${src}" alt="university logo" class="h-9 md:h-10 w-400 object-contain shrink-0 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-  <span class="w-3 h-3 rounded-full bg-black/20 shrink-0 mx-2"></span>
+ const logoItems = universities.map(name => `
+  <div class="flex items-center gap-2.5 bg-[#F1F8FF] border border-[#ACD7F4]/40 px-4 py-2 rounded-full shrink-0">
+    <span class="font-display font-bold text- text-[#2E5C89]">${name}</span>
+    <span class="w-7 h-7 rounded-full bg-[#ACD7F4] flex items-center justify-center">
+      <i data-lucide="graduation-cap" class="w-4 h-4 text-[#0d2f56]"></i>
+    </span>
+  </div>
 `).join('');
 
-  // بنكررهم 3 مرات عشان الحركة تبقى مستمرة للأبد
   track.innerHTML = logoItems + logoItems + logoItems;
+  lucide.createIcons();
 }
 buildMarquee();
-
 
 // universities grid
 const uniGrid=document.getElementById('uni-grid');
